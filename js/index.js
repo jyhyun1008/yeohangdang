@@ -258,7 +258,9 @@ if (!page && !directory) {
     .catch(err => { throw err });
 } else if (page == 'gallery') {
     document.querySelector(".page_title").innerText = page
-    var findImgUrl = "https://i.peacht.art/api/users/notges"
+    document.querySelector(".page_content").innerHTML += '<div class="gallery_list"></div>'
+
+    var findImgUrl = "https://i.peacht.art/api/users/notes"
     var findImgParam = {
         method: 'POST',
         headers: {
@@ -267,21 +269,24 @@ if (!page && !directory) {
         body: JSON.stringify({
             userId: '9pst070wee',
             withFiles: true,
+            limit: 100
         })
     }
-    fetch((findImgUrl, findImgParam))
+    fetch(findImgUrl, findImgParam)
     .then((imgData => {return imgData.json()}))
     .then((imgRes) => {
-        imgs = []
+        var imgs = []
+        var notes = []
+
         if (imgRes.length != 0) {
-            document.querySelector(".page_content").innerHTML += '<div class="gallery_list></div>'
             for (var i = 0; i<imgRes.length; i++) {
                 for (var j = 0; j < imgRes[i].files.length; j++) {
                     imgs.push(imgRes[i].files[j].url)
+                    notes.push('https://i.peacht.art/notes/'+imgRes[i].id)
                 }
             }
             for (var i = 0; i < imgs.length; i++) {
-                document.querySelector(".gallery_list").innerHTML += '<div class="gallery"><img src="'+imgs[i]+'"></div>'
+                document.querySelector(".gallery_list").innerHTML += '<div class="gallery"><a href="'+notes[i]+'"><img src="'+imgs[i]+'"></a></div>'
             }
         }
     })
