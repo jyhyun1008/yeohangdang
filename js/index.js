@@ -85,6 +85,45 @@ function getToc() {
 
 }
 
+function getCat(directory, arr) {
+    document.querySelector('#toc').innerHTML = '<div><a href="./?d='+directory+'">ALL</a></div>';
+    if (arr.length > 0) {
+        for (var i = 0; i < arr.length; i++){
+            document.querySelector('#toc').innerHTML += '<div><a href="./?d='+directory+'/'+arr[i]+'">'+arr[i]+'</a></div>';
+        }
+    }
+
+    //nav 관련 설정
+    projectsHeight = document.querySelector('#projects-box').offsetHeight;
+    if (vw > 11) {
+        document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
+    }
+    tocHeight = document.querySelector('#toc-box').offsetHeight;
+    document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
+    
+    hover.pause();
+    hover.currentTime = 0;
+    hover.play()
+    .then(() => {
+        hover.pause();
+        hover.currentTime = 0;
+    })
+    .catch(error => {
+        document.querySelector('#firstPage').style.display = 'flex';
+        document.querySelector('#wrapper').style.display = 'none';
+        document.querySelector('#firstPage').addEventListener("click", (e) => {
+            document.querySelector('#firstPage').style.display = 'none';
+            document.querySelector('#wrapper').style.display = 'block';
+        
+        })
+    });
+
+    $("a").mouseover(function() {
+        hoverPlay();
+    });
+
+}
+
 //마크다운 파싱
 function parseMd(md){
 
@@ -222,7 +261,17 @@ if (!page && !directory) {
     fetch(url)
     .then(res => res.text())
     .then((out) => {
-        document.querySelector(".page_title").innerText = page.substring(page.lastIndexOf('/') + 1)
+        var page_title = page.substring(page.lastIndexOf('/') + 1)
+        if (page_title.split('_').length == 3) {
+            var this_directory = page.split('/')[0]
+            var this_category = page_title.split('_')[0]
+            var this_date = page_title.split('_')[1]
+            var this_title = page_title.split('_')[2]
+            document.querySelector(".page_title").innerText = this_title
+            document.querySelector(".page_content").innerHTML += '<div class="page_subtitle"><div><a href="./?d='+this_directory+'">'+this_directory+'</a>/<a href="./?d='+this_directory+'/'+this_category+'">'+this_category+'</a></div><div><code>'+this_date+'</code></div></div>'
+        } else {
+            document.querySelector(".page_title").innerText = page_title
+        }
         document.querySelector(".page_content").innerHTML += parseMd(out)
         
         getToc();
@@ -244,20 +293,41 @@ if (!page && !directory) {
                 .then((out2) => {
                     var resultree2 = JSON.parse(out2).tree;
                     for (var i=0; i < resultree2.length; i++) {
-                        if (resultree2[i].path == directory) {
+                        if (resultree2[i].path == directory.split('/')[0]) {
                             var resulturl2 = resultree2[i].url
                             fetch(resulturl2)
                             .then(res3 => res3.text())
                             .then((out3) => {
                                 var result = JSON.parse(out3).tree
                                 result.sort((a, b) => parseInt(a.path.split('_')[1]) - parseInt(b.path.split('_')[1]));
+                                var articles = []
+                                var categories = []
                                 for (var j=0; j<result.length;j++) {
-                                    var category = result[j].path.split('_')[0]
-                                    var date = result[j].path.split('_')[1]
-                                    var title = result[j].path.split('_')[2].split('.')[0]
-                                    document.querySelector(".article_list").innerHTML += '<div class="article"><a href="./?p='+directory+'/'+result[j].path.split('.')[0]+'"><span>'+title+'</span><span><code>'+category+'</code><code>'+date+'</code></span></a></div>'
+                                    articles.push({
+                                        title: result[j].path.split('_')[2].split('.')[0],
+                                        category: result[j].path.split('_')[0],
+                                        date: result[j].path.split('_')[1]
+                                    })
+                                    categories.push(result[j].path.split('_')[0])
                                 }
-                                getToc();
+
+                                var categorieset = new Set(categories);
+                                categories = [...categorieset];
+                                var category
+
+                                if (directory.split('/').length == 1) {
+                                    category = ''
+                                } else {
+                                    category = directory.split('/')[1]
+                                }
+
+                                for (var j=0; j<articles.length; j++){
+                                    if (articles[j].category == category || category == ''){
+                                        document.querySelector(".article_list").innerHTML += '<div class="article"><a href="./?p='+directory.split('/')[0]+'/'+articles[j].category+'_'+articles[j].date+'_'+articles[j].title+'"><span>'+articles[j].title+'</span><span><code>'+articles[j].category+'</code> <code>'+articles[j].date+'</code></span></a></div>'
+                                    }
+                                }
+
+                                getCat(directory.split('/'), categories);
                             })
                         }
                     }
