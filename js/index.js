@@ -26,9 +26,11 @@ function hoverPlay() {
     hover.play()
     .then(() => {})
     .catch(error => {
+        document.querySelector('#firstPage').style.display = 'block';
+        document.querySelector('#wrapper').style.display = 'none';
         document.querySelector('#firstPage').addEventListener("click", (e) => {
-            document.querySelector('#firstPage').style.display = 'block';
-            document.querySelector('#wrapper').style.display = 'none';
+            document.querySelector('#firstPage').style.display = 'none';
+            document.querySelector('#wrapper').style.display = 'block';
         
             //nav 관련 설정
             projectsHeight = document.querySelector('#projects-box').offsetHeight;
