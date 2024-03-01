@@ -1,0 +1,108 @@
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+
+:root {
+    --accent: #ff9899;
+    --bg: #f6f1f1;
+    --darkaccent: color-mix(in srgb, var(--accent) 70%, #820080);
+    --lightaccent: color-mix(in srgb, var(--accent) 60%, #fbffbb);
+}
+
+body {
+    font-family: Galmuri11, sans-serif;
+    background-color: var(--bg);
+    background: radial-gradient(circle, transparent 20%, var(--bg) 20%, var(--bg) 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, var(--bg) 20%, var(--accent) 80%, transparent 80%, transparent) 25px 25px, linear-gradient(var(--accent) 2px, transparent 2px) 0 -1px, linear-gradient(90deg, var(--accent) 2px, var(--bg) 2px) -1px 0;
+    background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+}
+
+#title-box {
+    position: fixed;
+    margin: 0 auto;
+    top: 50px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#logo img {
+    width: 128px;
+    border-radius: 40%;
+    border: 2px dashed var(--darkaccent)
+}
+
+#content-box {
+    width: 100%;
+    max-width: 800px;
+    margin: 270px auto 0 auto;
+    background: #ffffffc2;
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px dashed var(--darkaccent);
+}
+
+#nav-box {
+    position: fixed;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    top: 200px;
+    left: 0;
+    right: 0;
+    background: var(--accent);
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px dashed var(--darkaccent);
+}
+
+#projects-box {
+    opacity: 0.8;
+    position: fixed;
+    width: 100%;
+    max-width: 150px;
+    margin: 0 auto;
+    left: 200px;
+    background: var(--accent);
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px dashed var(--darkaccent);
+}
+
+#toc-box {
+    opacity: 0.8;
+    position: fixed;
+    width: 100%;
+    max-width: 150px;
+    margin: 0 auto;
+    right: 200px;
+    background: var(--accent);
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px dashed var(--darkaccent);
+}
+
+#nav {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    color: #fff;
+}
+
+#projects-title, #toc-title {
+    text-align: center;
+    color: #fff;
+}
+
+#projects, #toc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 2px dashed var(--darkaccent);
+    padding: 5px;
+    color: var(--accent);
+}
+
+#nav a, #projects a, #toc a {
+    color: inherit;
+    text-decoration: none;
+}
