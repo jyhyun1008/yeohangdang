@@ -205,6 +205,7 @@ function getQueryStringObject() {
 var qs = getQueryStringObject();
 var page = qs.p;
 var directory = qs.d;
+var article = qs.a;
 
 if (!page && !directory) {
     var url = "https://raw.githubusercontent.com/"+USERNAME+"/"+REPOSITORY+"/main/page/index.md"
@@ -233,6 +234,22 @@ if (!page && !directory) {
     fetch(url)
     .then(res => res.text())
     .then((out) => {
-        var resulturl = JSON.parse(out).tree[2].url
+        var resultree = JSON.parse(out).tree;
+        for (var i=0; i < resultree.length; i++) {
+            if (resultree[i].path == directory) {
+                var resulturl = resultree[i].url
+                fetch(resulturl)
+                .then(res2 => res2.text())
+                .then((out2) => {
+                    var result = JSON.parse(out2).tree
+                    document.querySelector(".page_title").innerText = directory
+                    document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
+                    result.sort((a, b) => parseInt(a.path.split('_')[0]) - parseInt(b.path.split('_')[0]));
+                    for (var j=0; j<result.length;j++) {
+                        document.querySelector(".article_list").innerHTML += '<div class="article"><a href="https://raw.githubusercontent.com/'+USERNAME+'/'+REPOSITORY+'/main/page/'+result[j].path+'">'+result[j].path.split('.')[0]+'</a></div>'
+                    }
+                })
+            }
+        }
     })
 }
