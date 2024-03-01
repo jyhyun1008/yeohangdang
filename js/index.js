@@ -62,7 +62,7 @@ function parseMd(md){
     md = md.replace('</blockquote>\n<blockquote>', '\n');
 
     //hr
-    md = md.replace(/[\-]{3}/g, '</div></div><div class="item_wrap"><div class="line">✿</div><div class="item">');
+    md = md.replace(/[\-]{3}/g, '</div></div><div class="item_wrap"><div class="item">');
     
     //h
     md = md.replace(/\n[\#]{6}(.+)/g, '<h6>$1</h6>');
