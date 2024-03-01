@@ -24,7 +24,9 @@ function hoverPlay() {
     hover.pause();
     hover.currentTime = 0;
     hover.play()
-    .then(() => {})
+    .then(() => {
+        hover.pause();
+        hover.currentTime = 0;})
     .catch(error => {
         document.querySelector('#firstPage').style.display = 'block';
         document.querySelector('#wrapper').style.display = 'none';
