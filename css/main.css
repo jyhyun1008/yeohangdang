@@ -308,7 +308,7 @@ code {
         border-radius: 0;
     }
     
-    #firstPage img {
+    #firstPage div {
         display: none;
     }
 }
