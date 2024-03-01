@@ -255,6 +255,7 @@ if (!page && !directory) {
                                 for (var j=0; j<result.length;j++) {
                                     document.querySelector(".article_list").innerHTML += '<div class="article"><a href="https://raw.githubusercontent.com/'+USERNAME+'/'+REPOSITORY+'/main/page/'+result[j].path+'">'+result[j].path.split('.')[0]+'</a></div>'
                                 }
+                                getToc();
                             })
                         }
                     }
