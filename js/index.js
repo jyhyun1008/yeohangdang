@@ -49,11 +49,11 @@ description.content = SITE_DESCRIPTION
 document.getElementsByTagName('head')[0].appendChild(description)
 var themeColorApple = document.createElement('meta')
 themeColorApple.name = 'apple-mobile-web-app-status-bar-style'
-themeColorApple.content = ACCENT_COLOR
+themeColorApple.content = BG_COLOR
 document.getElementsByTagName('head')[0].appendChild(themeColorApple)
 var themeColor = document.createElement('meta')
 themeColor.name = 'theme-color'
-themeColor.content = ACCENT_COLOR
+themeColor.content = BG_COLOR
 document.getElementsByTagName('head')[0].appendChild(themeColor)
 
 function getToc() {
