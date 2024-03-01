@@ -108,7 +108,13 @@ body {
 }
 
 .page_title {
-
     text-align: center;
     color: var(--accent);
+}
+
+blockquote{
+    border-left: 3px solid var(--accent);
+    margin-left: 0;
+    padding: 5px 0 5px 1em;
+    background: white;
 }
