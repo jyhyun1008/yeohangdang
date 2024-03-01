@@ -323,17 +323,12 @@ if (!page && !directory) {
 } else if (directory='blog') {
     document.querySelector(".page_title").innerText = 'blog'
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
-    var url = 'http://www.patreon,com/api/oauth2/v2/campaigns/82062341/posts'
-    var param = {
-        method: 'GET',
-        headers: {
-            'content-type': 'application/json',
-        }
-    }
-    fetch(url, param)
-    .then((data => {return data.json()}))
-    .then((res) => {
-        document.querySelector(".article_list").innerText+= JSON.stringify(res)
+    var url = 'https://www.patreon.com/api/posts?filter%5Bcampaign_id%5D=9837321&include=attachments,user_defined_tags,campaign.rewards&field%5Bpost%5D=content,min_cents_pleged_to_view,post_type,title,url,published_at&sort=-published_at&filter%5Bis_draft%5D=false'
+    fetch(url)
+    .then(res => res.text())
+    .then((out) => {
+        result = JSON.parse(out).data[0]
+        document.querySelector(".article_list").innerText+= result
     })
     .catch(err => {
         document.querySelector(".article_list").innerText += err
