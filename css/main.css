@@ -191,6 +191,7 @@ blockquote{
 
 .article a:hover {
     background-color: var(--lightaccent);
+    opacity: 0.5;
 }
 
 code {
