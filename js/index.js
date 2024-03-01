@@ -158,7 +158,7 @@ if (!page && !directory) {
     fetch(url)
     .then(res => res.text())
     .then((out) => {
-        document.querySelector(".page_title").innerText = page.substring(page.lastIndexOf('/') + 1)
+        document.querySelector(".page_title").innerText = 'index'
         document.querySelector(".page_content").innerHTML += parseMd(out)
     })
     .catch(err => { throw err });
