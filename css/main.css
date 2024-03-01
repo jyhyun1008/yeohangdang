@@ -106,3 +106,9 @@ body {
     color: inherit;
     text-decoration: none;
 }
+
+.page_title {
+
+    text-align: center;
+    color: var(--accent);
+}
