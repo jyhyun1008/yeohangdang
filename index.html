@@ -11,13 +11,16 @@
     <link rel="shortcut icon" href="./assets/icon.ico">
     <link rel="apple-touch-icon" href="./assets/icon.png">
     <link rel="apple-touch-icon-precomposed" href="./assets/icon.png">
-    <link rel="stylesheet" media="screen" href="./css/main.css?v=0.0.0">
+    <link rel="stylesheet" media="screen" href="./css/main.css?v=0.0.1">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
 <body>
+    <div id="firstPage">
+        <div id="logo"><img src="./assets/icon.png"></div>
+        <div>여행당</div>
+    </div>
 
-<div id="wrapper">
+<div id="wrapper" style="display:none;">
     <div id="title-box">
         <div id="logo"><img src="./assets/icon.png"></div>
         <div id="title"></div>
@@ -59,9 +62,10 @@
         </div>
     </div>
     <div id="footer"></div>
+    <audio id="hover_play" controls><source src="./assets/ding.wav" type="audio/wav" /></audio>
 </div>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="./settings.js"></script>
-<script src="./js/index.js?v=0.0.2"></script>
+<script src="./js/index.js?v=0.0.3"></script>
 </body>

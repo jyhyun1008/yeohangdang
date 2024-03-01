@@ -1,5 +1,32 @@
 @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 
+audio {
+    display: none;
+}
+
+#firstPage {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 5vh;
+    left: 5vw;
+    width: 90vw;
+    height: 90vh;
+    margin: 0;
+    text-align: center;
+    background: #ffffffc2;
+    border-radius: 15px;
+    border: 2px dashed var(--darkaccent);
+}
+
+#firstPage img {
+    width: 128px;
+    border-radius: 40%;
+    border: 2px dashed var(--darkaccent)
+}
+
 :root {
     --accent: #ff9899;
     --bg: #f6f1f1;
@@ -111,6 +138,11 @@ body {
 #nav a, #projects a, #toc a {
     color: inherit;
     text-decoration: none;
+}
+
+#nav a:hover {
+    background-color: var(--lightaccent);
+    border-radius: 5px;
 }
 
 .page_title {

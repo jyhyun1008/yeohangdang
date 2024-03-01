@@ -1,3 +1,8 @@
+document.querySelector('#firstPage').addEventListener("click", (e) => {
+    document.querySelector('#firstPage').style.display = 'none';
+    document.querySelector('#wrapper').style.display = 'block';
+})
+
 
 //윈도우 사이즈
 let vh = window.innerHeight * 0.01;
@@ -22,6 +27,17 @@ window.addEventListener('resize', () => {
     }
 
 })
+
+// 소리
+function hoverPlay() {
+    var hover = document.getElementById('hover_play')
+    hover.pause();
+    hover.currentTime = 0;
+    hover.play()
+}
+$("a").mouseover(function() {
+    hoverPlay();
+	});
 
 //색 설정
 document.documentElement.style.setProperty('--accent', `${ACCENT_COLOR}`);
