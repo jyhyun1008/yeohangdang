@@ -230,6 +230,8 @@ if (!page && !directory) {
     })
     .catch(err => { throw err });
 } else if (directory) {
+    document.querySelector(".page_title").innerText = directory
+    document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
     var url = "https://api.github.com/repos/"+USERNAME+"/"+REPOSITORY+"/git/trees/main"
     fetch(url)
     .then(res => res.text())
@@ -242,8 +244,6 @@ if (!page && !directory) {
                 .then(res2 => res2.text())
                 .then((out2) => {
                     var result = JSON.parse(out2).tree
-                    document.querySelector(".page_title").innerText = directory
-                    document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
                     result.sort((a, b) => parseInt(a.path.split('_')[0]) - parseInt(b.path.split('_')[0]));
                     for (var j=0; j<result.length;j++) {
                         document.querySelector(".article_list").innerHTML += '<div class="article"><a href="https://raw.githubusercontent.com/'+USERNAME+'/'+REPOSITORY+'/main/page/'+result[j].path+'">'+result[j].path.split('.')[0]+'</a></div>'
