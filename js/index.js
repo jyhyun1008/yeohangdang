@@ -256,6 +256,35 @@ if (!page && !directory) {
         
     })
     .catch(err => { throw err });
+} else if (page == 'gallery') {
+    document.querySelector(".page_title").innerText = page
+    var findImgUrl = "https://i.peacht.art/api/users/notges"
+    var findImgParam = {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+            userId: '9pst070wee',
+            withFiles: true,
+        })
+    }
+    fetch((findImgUrl, findImgParam))
+    .then((imgData => {return imgData.json()}))
+    .then((imgRes) => {
+        imgs = []
+        if (imgRes.length != 0) {
+            document.querySelector(".page_content").innerHTML += '<div class="gallery_list></div>'
+            for (var i = 0; i<imgRes.length; i++) {
+                for (var j = 0; j < imgRes[i].files.length; j++) {
+                    imgs.push(imgRes[i].files[j].url)
+                }
+            }
+            for (var i = 0; i < imgs.length; i++) {
+                document.querySelector(".gallery_list").innerHTML += '<div class="gallery"><img src="'+imgs[i]+'"></div>'
+            }
+        }
+    })
 } else if (page) {
     var url = "https://raw.githubusercontent.com/"+USERNAME+"/"+REPOSITORY+"/main/page/"+page+".md"
     fetch(url)

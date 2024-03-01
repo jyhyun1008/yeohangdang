@@ -211,6 +211,16 @@ code {
     text-decoration: none;
 }
 
+.gallery_list {
+    display: flex;
+}
+
+.gallery {
+    width: 30%;
+    aspect-ratio: 1 / 1;
+    object-fit:cover;
+}
+
 @media (max-width: 1100px) {
 
     #title-box {
