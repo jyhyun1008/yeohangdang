@@ -250,11 +250,12 @@ if (!page && !directory) {
                             .then(res3 => res3.text())
                             .then((out3) => {
                                 var result = JSON.parse(out3).tree
-                                result.sort((a, b) => parseInt(a.path.split('_')[0]) - parseInt(b.path.split('_')[0]));
+                                result.sort((a, b) => parseInt(a.path.split('_')[1]) - parseInt(b.path.split('_')[1]));
                                 for (var j=0; j<result.length;j++) {
-                                    var date = result[j].path.split('_')[0]
-                                    var title = result[j].path.split('_')[1].split('.')[0]
-                                    document.querySelector(".article_list").innerHTML += '<div class="article"><a href="./?p='+directory+'/'+result[j].path.split('.')[0]+'"><span>'+title+'</span><code>'+date+'</code></a></div>'
+                                    var category = result[j].path.split('_')[0]
+                                    var date = result[j].path.split('_')[1]
+                                    var title = result[j].path.split('_')[2].split('.')[0]
+                                    document.querySelector(".article_list").innerHTML += '<div class="article"><a href="./?p='+directory+'/'+result[j].path.split('.')[0]+'"><span>'+title+'</span><span><code>'+category+'</code><code>'+date+'</code></span></a></div>'
                                 }
                                 getToc();
                             })
