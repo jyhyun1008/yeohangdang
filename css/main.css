@@ -207,7 +207,7 @@ code {
     margin-bottom: 50px;
 }
 
-.page_subtitle a {
+.page_content a {
     color: var(--accent);
     text-decoration: none;
 }
