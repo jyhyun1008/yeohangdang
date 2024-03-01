@@ -1,6 +1,5 @@
 var projectsHeight, tocHeight
-
-
+var hover = document.getElementById('hover_play')
 
 //윈도우 사이즈
 let vh = window.innerHeight * 0.01;
@@ -20,20 +19,9 @@ window.addEventListener('resize', () => {
 
 // 소리
 function hoverPlay() {
-    var hover = document.getElementById('hover_play')
     hover.pause();
     hover.currentTime = 0;
     hover.play()
-    .then(() => {})
-    .catch(error => {
-        document.querySelector('#firstPage').style.display = 'block';
-        document.querySelector('#wrapper').style.display = 'none';
-        document.querySelector('#firstPage').addEventListener("click", (e) => {
-            document.querySelector('#firstPage').style.display = 'none';
-            document.querySelector('#wrapper').style.display = 'block';
-        
-        })
-    });
 }
 
 //색 설정
@@ -73,8 +61,23 @@ function getToc() {
     }
     tocHeight = document.querySelector('#toc-box').offsetHeight;
     document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
-
-    hoverPlay();
+    
+    hover.pause();
+    hover.currentTime = 0;
+    hover.play()
+    .then(() => {
+        hover.pause();
+        hover.currentTime = 0;
+    })
+    .catch(error => {
+        document.querySelector('#firstPage').style.display = 'block';
+        document.querySelector('#wrapper').style.display = 'none';
+        document.querySelector('#firstPage').addEventListener("click", (e) => {
+            document.querySelector('#firstPage').style.display = 'none';
+            document.querySelector('#wrapper').style.display = 'block';
+        
+        })
+    });
 
     $("a").mouseover(function() {
         hoverPlay();
