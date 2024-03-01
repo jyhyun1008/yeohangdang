@@ -70,7 +70,7 @@ function getToc() {
         hover.currentTime = 0;
     })
     .catch(error => {
-        document.querySelector('#firstPage').style.display = 'block';
+        document.querySelector('#firstPage').style.display = 'flex';
         document.querySelector('#wrapper').style.display = 'none';
         document.querySelector('#firstPage').addEventListener("click", (e) => {
             document.querySelector('#firstPage').style.display = 'none';
