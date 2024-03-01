@@ -205,7 +205,6 @@ function getQueryStringObject() {
 var qs = getQueryStringObject();
 var page = qs.p;
 var directory = qs.d;
-var article = qs.a;
 
 if (!page && !directory) {
     var url = "https://raw.githubusercontent.com/"+USERNAME+"/"+REPOSITORY+"/main/page/index.md"
@@ -253,7 +252,9 @@ if (!page && !directory) {
                                 var result = JSON.parse(out3).tree
                                 result.sort((a, b) => parseInt(a.path.split('_')[0]) - parseInt(b.path.split('_')[0]));
                                 for (var j=0; j<result.length;j++) {
-                                    document.querySelector(".article_list").innerHTML += '<div class="article"><a href="https://raw.githubusercontent.com/'+USERNAME+'/'+REPOSITORY+'/main/page/'+result[j].path+'">'+result[j].path.split('.')[0]+'</a></div>'
+                                    var date = result[j].path.split('_')[0]
+                                    var title = result[j].path.split('_')[1].split('.')[0]
+                                    document.querySelector(".article_list").innerHTML += '<div class="article"><a href="./?p='+directory+'/'+result[j].path.split('.')[0]+'"><span>'+title+'</span><code>'+date+'</code></a></div>'
                                 }
                                 getToc();
                             })
