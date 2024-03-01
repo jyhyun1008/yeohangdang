@@ -67,7 +67,8 @@ body {
     padding: 10px;
     border-radius: 15px;
     border: 2px dashed var(--darkaccent);
-    height: calc(100vh - 500px);
+    height: calc(100vh - 400px);
+    max-height: 800px;
     overflow: scroll;
 }
 
