@@ -1,17 +1,6 @@
 var projectsHeight, tocHeight
 
-document.querySelector('#firstPage').addEventListener("click", (e) => {
-    document.querySelector('#firstPage').style.display = 'none';
-    document.querySelector('#wrapper').style.display = 'block';
 
-    //nav 관련 설정
-    projectsHeight = document.querySelector('#projects-box').offsetHeight;
-    if (vw > 11) {
-        document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
-    }
-    tocHeight = document.querySelector('#toc-box').offsetHeight;
-    document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
-})
 
 //윈도우 사이즈
 let vh = window.innerHeight * 0.01;
@@ -35,6 +24,21 @@ function hoverPlay() {
     hover.pause();
     hover.currentTime = 0;
     hover.play()
+    .then(() => {})
+    .catch(error => {
+        document.querySelector('#firstPage').addEventListener("click", (e) => {
+            document.querySelector('#firstPage').style.display = 'block';
+            document.querySelector('#wrapper').style.display = 'none';
+        
+            //nav 관련 설정
+            projectsHeight = document.querySelector('#projects-box').offsetHeight;
+            if (vw > 11) {
+                document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
+            }
+            tocHeight = document.querySelector('#toc-box').offsetHeight;
+            document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
+        })
+    });
 }
 
 //색 설정
