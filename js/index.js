@@ -1,3 +1,28 @@
+
+//윈도우 사이즈
+let vh = window.innerHeight * 0.01;
+let vw = window.innerWidth * 0.01;
+
+//nav 관련 설정
+var projectsHeight = document.querySelector('#projects-box').offsetHeight;
+if (vw > 11) {
+    document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
+}
+var tocHeight = document.querySelector('#toc-box').offsetHeight;
+document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
+
+// 리사이즈
+window.addEventListener('resize', () => {
+    let vh = window.innerHeight * 0.01;
+    let vw = window.innerWidth * 0.01;
+    if (vw > 11) {
+        document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
+    } else {
+        document.querySelector('#projects-box').style.top = 'auto';
+    }
+
+})
+
 //색 설정
 document.documentElement.style.setProperty('--accent', `${ACCENT_COLOR}`);
 document.documentElement.style.setProperty('--bg', `${BG_COLOR}`);
@@ -16,12 +41,6 @@ var themeColor = document.createElement('meta')
 themeColor.name = 'theme-color'
 themeColor.content = ACCENT_COLOR
 document.getElementsByTagName('head')[0].appendChild(themeColor)
-
-//nav 관련 설정
-var projectsHeight = document.querySelector('#projects-box').offsetHeight;
-document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
-var tocHeight = document.querySelector('#toc-box').offsetHeight;
-document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
 
 function getToc() {
     var toc = document.getElementsByClassName('h1')
