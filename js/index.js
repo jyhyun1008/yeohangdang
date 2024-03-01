@@ -320,7 +320,22 @@ if (!page && !directory) {
         getToc();
     })
     .catch(err => { throw err });
-} else if (directory) {
+} else if (directory='blog') {
+    document.querySelector(".page_title").innerText = 'blog'
+    document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
+    var url = 'http://www.patreon,com/api/oauth2/v2/campaigns/82062341/posts'
+    var param = {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+        }
+    }
+    fetch(url, param)
+    .then((data => {return data.json()}))
+    .then((res) => {
+        document.querySelector(".article_list").innerHTML += JSON.stringify(res)
+    })
+}else if (directory) {
     document.querySelector(".page_title").innerText = directory
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
     var url = "https://api.github.com/repos/"+USERNAME+"/"+REPOSITORY+"/git/trees/main"
