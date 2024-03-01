@@ -286,7 +286,7 @@ if (!page && !directory) {
                 }
             }
             for (var i = 0; i < imgs.length; i++) {
-                document.querySelector(".gallery_list").innerHTML += '<div class="gallery"><a href="'+notes[i]+'"><img src="'+imgs[i]+'"></a></div>'
+                document.querySelector(".gallery_list").innerHTML += '<div class="gallery"><a href="'+notes[i]+'" target="_blank"><img src="'+imgs[i]+'"></a></div>'
             }
         }
         getToc();
