@@ -22,14 +22,17 @@ var projectsHeight = document.querySelector('#projects-box').offsetHeight;
 document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
 var tocHeight = document.querySelector('#toc-box').offsetHeight;
 document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
-var toc = document.getElementsByClassName('h1')
-if (toc.length > 0) {
-}
-for (var i = 0; i < toc.length; i++){
-  toc[i].id = 'title'+i;
-  toc[i].setAttribute("name", 'title'+i);
-  var tocInnerText = toc[i].innerText;
-  document.querySelector('#toc').innerHTML += '<div><a href="#title'+i+'">'+tocInnerText+'</a></div>';
+
+function getToc() {
+    var toc = document.getElementsByClassName('h1')
+    if (toc.length > 0) {
+        for (var i = 0; i < toc.length; i++){
+        toc[i].id = 'title'+i;
+        toc[i].setAttribute("name", 'title'+i);
+        var tocInnerText = toc[i].innerText;
+        document.querySelector('#toc').innerHTML += '<div><a href="#title'+i+'">'+tocInnerText+'</a></div>';
+        }
+    }
 }
 
 //마크다운 파싱
@@ -160,6 +163,7 @@ if (!page && !directory) {
     .then((out) => {
         document.querySelector(".page_title").innerText = 'index'
         document.querySelector(".page_content").innerHTML += parseMd(out)
+        getToc();
     })
     .catch(err => { throw err });
 } else if (page) {
