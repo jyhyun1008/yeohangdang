@@ -1,20 +1,21 @@
+var projectsHeight, tocHeight
+
 document.querySelector('#firstPage').addEventListener("click", (e) => {
     document.querySelector('#firstPage').style.display = 'none';
     document.querySelector('#wrapper').style.display = 'block';
-})
 
+    //nav 관련 설정
+    projectsHeight = document.querySelector('#projects-box').offsetHeight;
+    if (vw > 11) {
+        document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
+    }
+    tocHeight = document.querySelector('#toc-box').offsetHeight;
+    document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
+})
 
 //윈도우 사이즈
 let vh = window.innerHeight * 0.01;
 let vw = window.innerWidth * 0.01;
-
-//nav 관련 설정
-var projectsHeight = document.querySelector('#projects-box').offsetHeight;
-if (vw > 11) {
-    document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
-}
-var tocHeight = document.querySelector('#toc-box').offsetHeight;
-document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
 
 // 리사이즈
 window.addEventListener('resize', () => {
@@ -35,9 +36,6 @@ function hoverPlay() {
     hover.currentTime = 0;
     hover.play()
 }
-$("a").mouseover(function() {
-    hoverPlay();
-	});
 
 //색 설정
 document.documentElement.style.setProperty('--accent', `${ACCENT_COLOR}`);
@@ -68,6 +66,11 @@ function getToc() {
         document.querySelector('#toc').innerHTML += '<div><a href="#title'+i+'">'+tocInnerText+'</a></div>';
         }
     }
+
+    $("a").mouseover(function() {
+        hoverPlay();
+    });
+
 }
 
 //마크다운 파싱
@@ -199,6 +202,7 @@ if (!page && !directory) {
         document.querySelector(".page_title").innerText = 'index'
         document.querySelector(".page_content").innerHTML += parseMd(out)
         getToc();
+        
     })
     .catch(err => { throw err });
 } else if (page) {
