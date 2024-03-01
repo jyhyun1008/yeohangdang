@@ -64,6 +64,7 @@ function getToc() {
     
     hover.pause();
     hover.currentTime = 0;
+    if (vw > 11) {
     hover.play()
     .then(() => {
         hover.pause();
@@ -77,11 +78,12 @@ function getToc() {
             document.querySelector('#wrapper').style.display = 'block';
         
         })
-    });
+    })
 
     $("a").mouseover(function() {
         hoverPlay();
     });
+    }
 
 }
 
@@ -103,6 +105,7 @@ function getCat(directory, arr) {
     
     hover.pause();
     hover.currentTime = 0;
+    if (vw > 11) {
     hover.play()
     .then(() => {
         hover.pause();
@@ -121,6 +124,7 @@ function getCat(directory, arr) {
     $("a").mouseover(function() {
         hoverPlay();
     });
+    }
 
 }
 
