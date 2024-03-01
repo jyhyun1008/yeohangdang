@@ -238,8 +238,8 @@ if (!page && !directory) {
     .then((out) => {
         var resultree1 = JSON.parse(out).tree;
         for (var k=0; k < resultree1.length; k++) {
-            if (resultree1[i].path == 'page') {
-                var resulturl1 = resultree1[i].url
+            if (resultree1[k].path == 'page') {
+                var resulturl1 = resultree1[k].url
                 fetch(resulturl1)
                 .then(res2 => res2.text())
                 .then((out2) => {
