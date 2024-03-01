@@ -288,7 +288,7 @@ code {
         margin: 200px auto 139px auto;
         padding: 0;
         height: auto;
-        max-height: auto;
+        max-height: fit-content;
         overflow: auto;
     }
     
