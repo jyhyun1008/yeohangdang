@@ -213,19 +213,7 @@ if (!page && !directory) {
         document.querySelector(".page_title").innerText = page.substring(page.lastIndexOf('/') + 1)
         document.querySelector(".page_content").innerHTML += parseMd(out)
         
-        $(document).ready(function(){
-	
-            $('ul.tabs li').click(function(){
-                var tab_id = $(this).attr('data-tab');
-        
-                $('ul.tabs li').removeClass('current');
-                $('.tab-content').removeClass('current');
-        
-                $(this).addClass('current');
-                $("#"+tab_id).addClass('current');
-            })
-        
-        })
+        getToc();
     })
     .catch(err => { throw err });
 } else if (directory) {
