@@ -276,7 +276,7 @@ code {
     }
 
     #content-box {
-        margin: 200px auto 0 auto;
+        margin: 200px auto 100px auto;
         padding: 0;
         height: auto;
         overflow: auto;
