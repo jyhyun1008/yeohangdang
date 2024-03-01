@@ -62,7 +62,7 @@ function parseMd(md){
     md = md.replace('</blockquote>\n<blockquote>', '\n');
 
     //hr
-    md = md.replace(/[\-]{3}/g, '</div></div><div class="item_wrap"><div class="item">');
+    md = md.replace(/[\-]{3}/g, '</div></div><div class="item_wrap"><div class="line">✿--✿--✿</div><div class="item">');
     
     //h
     md = md.replace(/\n[\#]{6}(.+)/g, '<h6>$1</h6>');
@@ -70,7 +70,7 @@ function parseMd(md){
     md = md.replace(/\n[\#]{4}(.+)/g, '<h4>$1</h4>');
     md = md.replace(/\n[\#]{3}(.+)/g, '<h3>$1</h3>');
     md = md.replace(/\n[\#]{2}(.+)/g, '<h2>$1</h2>');
-    md = md.replace(/\n[\#]{1}(.+)/g, '</div></div><div class="item_wrap"><div class="line">✿</div><div class="item"><h1 class="h1">$1</h1>');
+    md = md.replace(/\n[\#]{1}(.+)/g, '</div></div><div class="item_wrap"><div class="item"><h1 class="h1">$1</h1>');
     
     //images with links
     md = md.replace(/\!\[([^\]]+)\]\(([^\)]+)\)[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<div class="gallery"><a href="$3"><img src="$2" alt="$1" width="100%" /></a></div>');

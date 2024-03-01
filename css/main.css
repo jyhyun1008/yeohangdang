@@ -118,3 +118,7 @@ blockquote{
     padding: 5px 0 5px 1em;
     background: white;
 }
+
+.line {
+    color: var(--accent);
+}
