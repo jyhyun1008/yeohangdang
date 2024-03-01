@@ -327,8 +327,8 @@ if (!page && !directory) {
     fetch(url)
     .then(res => res.text())
     .then((out) => {
-        result = JSON.parse(out).data[0]
-        document.querySelector(".article_list").innerText+= result
+        var result = JSON.parse(out)
+        document.querySelector(".article_list").innerText += result
     })
     .catch(err => {
         document.querySelector(".article_list").innerText += err
