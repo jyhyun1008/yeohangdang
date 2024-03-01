@@ -32,13 +32,6 @@ function hoverPlay() {
             document.querySelector('#firstPage').style.display = 'none';
             document.querySelector('#wrapper').style.display = 'block';
         
-            //nav 관련 설정
-            projectsHeight = document.querySelector('#projects-box').offsetHeight;
-            if (vw > 11) {
-                document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
-            }
-            tocHeight = document.querySelector('#toc-box').offsetHeight;
-            document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
         })
     });
 }
@@ -72,7 +65,15 @@ function getToc() {
         document.querySelector('#toc').innerHTML += '<div><a href="#title'+i+'">'+tocInnerText+'</a></div>';
         }
     }
-    
+
+    //nav 관련 설정
+    projectsHeight = document.querySelector('#projects-box').offsetHeight;
+    if (vw > 11) {
+        document.querySelector('#projects-box').style.top = 'calc( 50vh - '+projectsHeight+'px )';
+    }
+    tocHeight = document.querySelector('#toc-box').offsetHeight;
+    document.querySelector('#toc-box').style.top = 'calc( 50vh - '+tocHeight+'px )';
+
     hoverPlay();
 
     $("a").mouseover(function() {
