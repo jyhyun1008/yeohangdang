@@ -289,6 +289,7 @@ if (!page && !directory) {
                 document.querySelector(".gallery_list").innerHTML += '<div class="gallery"><a href="'+notes[i]+'"><img src="'+imgs[i]+'"></a></div>'
             }
         }
+        getToc();
     })
 } else if (page) {
     var url = "https://raw.githubusercontent.com/"+USERNAME+"/"+REPOSITORY+"/main/page/"+page+".md"
