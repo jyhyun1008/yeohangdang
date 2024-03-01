@@ -72,6 +72,8 @@ function getToc() {
         document.querySelector('#toc').innerHTML += '<div><a href="#title'+i+'">'+tocInnerText+'</a></div>';
         }
     }
+    
+    hoverPlay();
 
     $("a").mouseover(function() {
         hoverPlay();
