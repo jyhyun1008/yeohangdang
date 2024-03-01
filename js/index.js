@@ -236,25 +236,30 @@ if (!page && !directory) {
     fetch(url)
     .then(res => res.text())
     .then((out) => {
-        var resulturl1 = JSON.parse(out).tree[3].url
-        fetch(resulturl1)
-        .then(res2 => res2.text())
-        .then((out2) => {
-            var resultree = JSON.parse(out2).tree;
-            for (var i=0; i < resultree.length; i++) {
-                if (resultree[i].path == directory) {
-                    var resulturl2 = resultree[i].url
-                    fetch(resulturl2)
-                    .then(res3 => res3.text())
-                    .then((out3) => {
-                        var result = JSON.parse(out3).tree
-                        result.sort((a, b) => parseInt(a.path.split('_')[0]) - parseInt(b.path.split('_')[0]));
-                        for (var j=0; j<result.length;j++) {
-                            document.querySelector(".article_list").innerHTML += '<div class="article"><a href="https://raw.githubusercontent.com/'+USERNAME+'/'+REPOSITORY+'/main/page/'+result[j].path+'">'+result[j].path.split('.')[0]+'</a></div>'
+        var resultree1 = JSON.parse(out).tree;
+        for (var k=0; k < resultree1.length; k++) {
+            if (resultree1[i].path == 'page') {
+                var resulturl1 = resultree1[i].url
+                fetch(resulturl1)
+                .then(res2 => res2.text())
+                .then((out2) => {
+                    var resultree2 = JSON.parse(out2).tree;
+                    for (var i=0; i < resultree2.length; i++) {
+                        if (resultree2[i].path == directory) {
+                            var resulturl2 = resultree2[i].url
+                            fetch(resulturl2)
+                            .then(res3 => res3.text())
+                            .then((out3) => {
+                                var result = JSON.parse(out3).tree
+                                result.sort((a, b) => parseInt(a.path.split('_')[0]) - parseInt(b.path.split('_')[0]));
+                                for (var j=0; j<result.length;j++) {
+                                    document.querySelector(".article_list").innerHTML += '<div class="article"><a href="https://raw.githubusercontent.com/'+USERNAME+'/'+REPOSITORY+'/main/page/'+result[j].path+'">'+result[j].path.split('.')[0]+'</a></div>'
+                                }
+                            })
                         }
-                    })
-                }
+                    }
+                })
             }
-        })
+        }
     })
 }
