@@ -1,6 +1,6 @@
 > 1인 복합 창작 문화생활공간, **여행당**
 
-![icon.png](./assets/icon.png)
+![main.jpg](./assets/main.jpg)
 
 # 소개
 

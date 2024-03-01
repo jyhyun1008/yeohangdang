@@ -218,6 +218,10 @@ code {
     text-decoration: none;
 }
 
+.page_content img {
+    border-radius: 10px;
+}
+
 .gallery_list {
     display: flex;
     flex-wrap: wrap;
