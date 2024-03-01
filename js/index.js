@@ -64,7 +64,7 @@ function getToc() {
     
     hover.pause();
     hover.currentTime = 0;
-    if (vw > 11) {
+    if (vw > 12) {
     hover.play()
     .then(() => {
         hover.pause();
@@ -105,7 +105,7 @@ function getCat(directory, arr) {
     
     hover.pause();
     hover.currentTime = 0;
-    if (vw > 11) {
+    if (vw > 12) {
     hover.play()
     .then(() => {
         hover.pause();
