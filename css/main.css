@@ -153,6 +153,7 @@ body {
 }
 
 .page_title {
+    text-transform: uppercase;
     text-align: center;
     color: var(--accent);
 }
