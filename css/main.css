@@ -12,6 +12,8 @@ body {
     background-color: var(--bg);
     background: radial-gradient(circle, transparent 20%, var(--bg) 20%, var(--bg) 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, var(--bg) 20%, var(--accent) 80%, transparent 80%, transparent) 25px 25px, linear-gradient(var(--accent) 2px, transparent 2px) 0 -1px, linear-gradient(90deg, var(--accent) 2px, var(--bg) 2px) -1px 0;
     background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+    background-attachment: fixed;
+    overscroll-behavior: none;
 }
 
 #title-box {
@@ -37,6 +39,8 @@ body {
     padding: 10px;
     border-radius: 15px;
     border: 2px dashed var(--darkaccent);
+    height: calc(100vh - 500px);
+    overflow: scroll;
 }
 
 #nav-box {
