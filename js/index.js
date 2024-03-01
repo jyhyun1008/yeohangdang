@@ -333,7 +333,10 @@ if (!page && !directory) {
     fetch(url, param)
     .then((data => {return data.json()}))
     .then((res) => {
-        document.querySelector(".article_list").innerHTML += JSON.stringify(res)
+        document.querySelector(".article_list").innerText+= JSON.stringify(res)
+    })
+    .catch(err => {
+        document.querySelector(".article_list").innerText += err
     })
 }else if (directory) {
     document.querySelector(".page_title").innerText = directory
