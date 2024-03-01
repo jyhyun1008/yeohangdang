@@ -236,20 +236,25 @@ if (!page && !directory) {
     fetch(url)
     .then(res => res.text())
     .then((out) => {
-        var resultree = JSON.parse(out).tree;
-        for (var i=0; i < resultree.length; i++) {
-            if (resultree[i].path == directory) {
-                var resulturl = resultree[i].url
-                fetch(resulturl)
-                .then(res2 => res2.text())
-                .then((out2) => {
-                    var result = JSON.parse(out2).tree
-                    result.sort((a, b) => parseInt(a.path.split('_')[0]) - parseInt(b.path.split('_')[0]));
-                    for (var j=0; j<result.length;j++) {
-                        document.querySelector(".article_list").innerHTML += '<div class="article"><a href="https://raw.githubusercontent.com/'+USERNAME+'/'+REPOSITORY+'/main/page/'+result[j].path+'">'+result[j].path.split('.')[0]+'</a></div>'
-                    }
-                })
+        var resulturl1 = JSON.parse(out).tree[3].url
+        fetch(resulturl1)
+        .then(res2 => res2.text())
+        .then((out2) => {
+            var resultree = JSON.parse(out2).tree;
+            for (var i=0; i < resultree.length; i++) {
+                if (resultree[i].path == directory) {
+                    var resulturl2 = resultree[i].url
+                    fetch(resulturl2)
+                    .then(res3 => res3.text())
+                    .then((out3) => {
+                        var result = JSON.parse(out3).tree
+                        result.sort((a, b) => parseInt(a.path.split('_')[0]) - parseInt(b.path.split('_')[0]));
+                        for (var j=0; j<result.length;j++) {
+                            document.querySelector(".article_list").innerHTML += '<div class="article"><a href="https://raw.githubusercontent.com/'+USERNAME+'/'+REPOSITORY+'/main/page/'+result[j].path+'">'+result[j].path.split('.')[0]+'</a></div>'
+                        }
+                    })
+                }
             }
-        }
+        })
     })
 }
