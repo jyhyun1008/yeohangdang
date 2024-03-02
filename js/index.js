@@ -323,7 +323,7 @@ if (!page && !directory) {
 } else if (directory='blog') {
     document.querySelector(".page_title").innerText = 'blog'
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
-    var url = 'https://www.patreon.com/api/posts?filter%5Bcampaign_id%5D=9837321&include=attachments,user_defined_tags,campaign.rewards&field%5Bpost%5D=content,min_cents_pleged_to_view,post_type,title,url,published_at&sort=-published_at&filter%5Bis_draft%5D=false'
+    var url = 'https://www.patreon.com/api/posts?filter[campaign_id]=9837321&include=attachments,user_defined_tags,campaign.rewards&field[post]=content,min_cents_pleged_to_view,post_type,title,url,published_at&sort=-published_at&filter[is_draft]=false'
     fetch(url, {
         'mode': 'no-cors',
         'content-type': 'application/json',
