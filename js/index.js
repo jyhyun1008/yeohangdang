@@ -326,7 +326,7 @@ if (!page && !directory) {
     var url = 'https://www.patreon.com/api/posts?filter%5Bcampaign_id%5D=9837321&include=attachments,user_defined_tags,campaign.rewards&field%5Bpost%5D=content,min_cents_pleged_to_view,post_type,title,url,published_at&sort=-published_at&filter%5Bis_draft%5D=false'
     fetch(url, {
         'mode': 'no-cors',
-        'content-type': 'application/json',
+        'content-type': 'application/javascript',
         'X-Content-Type-Options': 'nosniff'
     })
     .then(res => {
