@@ -332,9 +332,6 @@ if (!page && !directory) {
         var result = JSON.parse(out)
         document.querySelector(".article_list").innerText += result
     })
-    .catch(err => {
-        document.querySelector(".article_list").innerText += err
-    })
 }else if (directory) {
     document.querySelector(".page_title").innerText = directory
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
