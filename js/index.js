@@ -325,8 +325,7 @@ if (!page && !directory) {
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
     var url = 'https://www.patreon.com/api/posts?filter[campaign_id]=9837321&include=attachments,user_defined_tags,campaign.rewards&field[post]=content,min_cents_pleged_to_view,post_type,title,url,published_at&sort=-published_at&filter[is_draft]=false'
     fetch(url, {
-        'mode': 'no-cors',
-        'content-type': 'application/json',
+        'mode': 'no-cors'
     })
     .then(res => {
         console.log(res)
