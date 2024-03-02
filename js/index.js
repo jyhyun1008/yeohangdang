@@ -320,7 +320,7 @@ if (!page && !directory) {
         getToc();
     })
     .catch(err => { throw err });
-} else if (directory='blog') {
+} else if (directory=='blog') {
     document.querySelector(".page_title").innerText = 'blog'
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
     var url = 'https://www.patreon.com/api/posts?filter[campaign_id]=9837321&include=attachments,user_defined_tags,campaign.rewards&field[post]=content,min_cents_pleged_to_view,post_type,title,url,published_at&sort=-published_at&filter[is_draft]=false'
