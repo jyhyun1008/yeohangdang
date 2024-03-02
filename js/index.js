@@ -329,7 +329,7 @@ if (!page && !directory) {
         mode: 'no-cors'
     })
     .then(res => {
-        console.log(res)
+        console.log(res.text())
     })
     .then((out) => {
         var result = out
