@@ -327,6 +327,7 @@ if (!page && !directory) {
     fetch(url, {
         'mode': 'no-cors',
         'content-type': 'application/json',
+        'X-Content-Type-Options': 'nosniff'
     })
     .then(res => {
         res.json()
