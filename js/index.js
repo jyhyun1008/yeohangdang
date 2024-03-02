@@ -327,7 +327,8 @@ if (!page && !directory) {
     fetch(url, {
         mode: 'no-cors'
       })
-    .then((out) => {
+    .then(out => {
+        console.log(out)
         var result = JSON.parse(out)
         document.querySelector(".article_list").innerText += result
     })
