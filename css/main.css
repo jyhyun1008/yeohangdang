@@ -30,7 +30,7 @@ audio {
 :root {
     --accent: #ffdb77;
     --bg: #eee;
-    --darkaccent: color-mix(in srgb, var(--accent) 70%, #820080);
+    --darkaccent: color-mix(in srgb, var(--accent) 70%, #b50051);
     --lightaccent: color-mix(in srgb, var(--accent) 60%, #fbffbb);
 }
 
@@ -139,7 +139,7 @@ body {
     background: #fff;
     border: 2px dashed var(--darkaccent);
     padding: 5px;
-    color: var(--accent);
+    color: var(--darkaccent);
 }
 
 #nav a, #projects a, #toc a {
@@ -214,7 +214,7 @@ code {
 }
 
 .page_content a {
-    color: var(--accent);
+    color: var(--darkaccent);
     text-decoration: none;
 }
 
