@@ -334,7 +334,7 @@ if (!page && !directory) {
             articles.push({
                 title: result[i].attributes.title,
                 category: result[i].relationships.user_defined_tags.data[0].id.split(';')[1],
-                date: result[i].attributes.created_at.split('T')[0],
+                date: result[i].attributes.created_at.substring(2, 4)+result[i].attributes.created_at.substring(5, 7)+result[i].attributes.created_at.substring(8, 10),
                 url: result[i].attributes.url,
             })
             categories.push(result[i].relationships.user_defined_tags.data[0].id.split(';')[1])
@@ -352,7 +352,7 @@ if (!page && !directory) {
 
         for (var j=0; j<articles.length; j++){
             if (articles[j].category == category || category == ''){
-                document.querySelector(".article_list").innerHTML += '<div class="article"><a href="'+articles[j].url+'_'+articles[j].date+'_'+articles[j].title+'"><span>'+articles[j].title+'</span><span><code>'+articles[j].category+'</code> <code>'+articles[j].date+'</code></span></a></div>'
+                document.querySelector(".article_list").innerHTML += '<div class="article"><a href="'+articles[j].url+'"><span>'+articles[j].title+'</span><span><code>'+articles[j].category+'</code> <code>'+articles[j].date+'</code></span></a></div>'
             }
         }
 
