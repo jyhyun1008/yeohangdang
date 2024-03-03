@@ -345,7 +345,7 @@ if (!page && !directory) {
         getCat(directory.split('/')[0], categories);
 
     })
-}else if (directory) {
+} else if (directory) {
     document.querySelector(".page_title").innerText = directory
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
     var url = "https://api.github.com/repos/"+USERNAME+"/"+REPOSITORY+"/git/trees/main"
