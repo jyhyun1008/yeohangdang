@@ -27,8 +27,8 @@ Misskey를 기반으로 한 소셜 네트워크 서비스를 운영합니다.
 * 웹사이트: [i.chigoa.me](https://i.chigoa.me)
 
 # 픽셀터치
-`음악`
+`음악` `아이돌`
 
-여행당 소속은 아니며, 연합우주 인스턴스 요단강 익스프레스와 피치타르트에서 주관합니다!
+라이브 아이돌 소속사입니다. 연합우주 인스턴스 요단강 익스프레스와 피치타르트에서 주관합니다.
 
-* 웹사이트: [@pxt_ofcl@yodangang.express](https://yodangang.express/@pxt_ofcl)
+* 웹사이트: [pixeltou.ch](https://pixeltou.ch)
