@@ -356,7 +356,7 @@ if (!page && !directory) {
             }
         }
 
-        getCat(directory.split('/'), categories);
+        getCat(directory.split('/')[0], categories);
 
     })
 }else if (directory) {
@@ -409,7 +409,7 @@ if (!page && !directory) {
                                     }
                                 }
 
-                                getCat(directory.split('/'), categories);
+                                getCat(directory.split('/')[0], categories);
                             })
                         }
                     }
