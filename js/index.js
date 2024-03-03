@@ -233,7 +233,7 @@ if (!page && !directory) {
         document.querySelector('#firstPage').style.display = 'flex';
         document.querySelector('#wrapper').style.display = 'none';
         document.querySelector('#firstPage').addEventListener("click", (e) => {
-            location.href('./?p=index')
+            location.href = './?p=index'
         })
     })
 
