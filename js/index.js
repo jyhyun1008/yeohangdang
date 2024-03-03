@@ -320,15 +320,43 @@ if (!page && !directory) {
         getToc();
     })
     .catch(err => { throw err });
-} else if (directory=='blog') {
+} else if (directory.split('/')[0]=='blog') {
     document.querySelector(".page_title").innerText = 'blog'
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
     var url = 'https://i.peacht.art/socket.io'
     fetch(url)
     .then(res => {return res.json()})
     .then((out) => {
-        var result = out
-        document.querySelector(".article_list").innerText += result
+        var result = out.data
+        var articles = []
+        var categories = []
+        for (var i=0; i<result.length; i++) {
+            articles.push({
+                title: result[i].attributes.title,
+                category: result[i].attributes.relationships.user_defined_tags.data[0].id.split(';')[1],
+                date: result[i].attributes.createdAt,
+            })
+            categories.push(result[i].attributes.relationships.user_defined_tags.data[0].id.split(';')[1])
+        }
+
+        var categorieset = new Set(categories);
+        categories = [...categorieset];
+        var category
+
+        if (directory.split('/').length == 1) {
+            category = ''
+        } else {
+            category = directory.split('/')[1]
+        }
+
+        for (var j=0; j<articles.length; j++){
+            if (articles[j].category == category || category == ''){
+                document.querySelector(".article_list").innerHTML += '<div class="article"><a href="./?p='+directory.split('/')[0]+'/'+articles[j].category+'_'+articles[j].date+'_'+articles[j].title+'"><span>'+articles[j].title+'</span><span><code>'+articles[j].category+'</code> <code>'+articles[j].date+'</code></span></a></div>'
+            }
+        }
+
+        getCat(directory.split('/'), categories);
+
     })
 }else if (directory) {
     document.querySelector(".page_title").innerText = directory
