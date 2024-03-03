@@ -224,22 +224,23 @@ if (!page && !directory) {
     hover.pause();
     hover.currentTime = 0;
     if (vw > 12) {
-    hover.play()
-    .then(() => {
-        hover.pause();
-        hover.currentTime = 0;
-    })
-    .catch(error => {
-        document.querySelector('#firstPage').style.display = 'flex';
-        document.querySelector('#wrapper').style.display = 'none';
-        document.querySelector('#firstPage').addEventListener("click", (e) => {
+        hover.play()
+        .then(() => {
+            hover.pause();
+            hover.currentTime = 0;
             location.href = './?p=index'
         })
-    })
+        .catch(error => {
+            document.querySelector('#firstPage').style.display = 'flex';
+            document.querySelector('#wrapper').style.display = 'none';
+            document.querySelector('#firstPage').addEventListener("click", (e) => {
+                location.href = './?p=index'
+            })
+        })
 
-    $("a").mouseover(function() {
-        hoverPlay();
-    });
+        $("a").mouseover(function() {
+            hoverPlay();
+        });
     }
 
 } else if (page == 'gallery') {
