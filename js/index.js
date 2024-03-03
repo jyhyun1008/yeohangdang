@@ -333,10 +333,10 @@ if (!page && !directory) {
         for (var i=0; i<result.length; i++) {
             articles.push({
                 title: result[i].attributes.title,
-                category: result[i].attributes.relationships.user_defined_tags.data[0].id.split(';')[1],
+                category: result[i].relationships.user_defined_tags.data[0].id.split(';')[1],
                 date: result[i].attributes.createdAt,
             })
-            categories.push(result[i].attributes.relationships.user_defined_tags.data[0].id.split(';')[1])
+            categories.push(result[i].relationships.user_defined_tags.data[0].id.split(';')[1])
         }
 
         var categorieset = new Set(categories);
