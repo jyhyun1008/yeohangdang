@@ -325,7 +325,7 @@ if (!page && !directory) {
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
     var url = 'https://i.peacht.art/socket.io'
     fetch(url)
-    .then(res => {return imgData.json()})
+    .then(res => {return res.json()})
     .then((out) => {
         var result = out
         document.querySelector(".article_list").innerText += result
