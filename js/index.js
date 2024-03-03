@@ -293,7 +293,7 @@ if (!page && !directory) {
                 document.querySelector(".gallery_list").innerHTML += '<div class="gallery"><a href="'+notes[i]+'" target="_blank"><img src="'+imgs[i]+'"></a></div>'
                 
             }
-            for (var i=0; i < imgs.length % 3 - 1; i++) {
+            for (var i=0; i < (imgs.length - 1) % 3; i++) {
                 document.querySelector(".gallery_list").innerHTML += '<div class="gallery"></div>'
             }
         }
