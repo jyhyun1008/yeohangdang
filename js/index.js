@@ -352,7 +352,7 @@ if (!page && !directory) {
 
         for (var j=0; j<articles.length; j++){
             if (articles[j].category == category || category == ''){
-                document.querySelector(".article_list").innerHTML += '<div class="article"><a href="'+articles[j].url+'"><span>'+articles[j].title+'</span><span><code>'+articles[j].category+'</code> <code>'+articles[j].date+'</code></span></a></div>'
+                document.querySelector(".article_list").innerHTML += '<div class="article"><a href="'+articles[j].url+'" target="_blank"><span>'+articles[j].title+'</span><span><code>'+articles[j].category+'</code> <code>'+articles[j].date+'</code></span></a></div>'
             }
         }
 
