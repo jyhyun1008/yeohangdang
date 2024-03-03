@@ -323,19 +323,9 @@ if (!page && !directory) {
 } else if (directory=='blog') {
     document.querySelector(".page_title").innerText = 'blog'
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
-    var url = 'https://www.patreon.com/api/posts?filter[campaign_id]=9837321&include=attachments,user_defined_tags,campaign.rewards&field[post]=content,min_cents_pleged_to_view,post_type,title,url,published_at&sort=-published_at&filter[is_draft]=false'
-    fetch(url, {
-        'mode': 'no-cors',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body: JSON.stringify({
-            'filter[campaign_id]': '9837321',
-        })
-    })
-    .then(res => {
-        console.log(res)
-    })
+    var url = 'https://i.peacht.art/socket.io'
+    fetch(url)
+    .then(res => {return imgData.json()})
     .then((out) => {
         var result = out
         document.querySelector(".article_list").innerText += result
