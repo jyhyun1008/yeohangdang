@@ -334,7 +334,7 @@ if (!page && !directory) {
             articles.push({
                 title: result[i].attributes.title,
                 category: result[i].relationships.user_defined_tags.data[0].id.split(';')[1],
-                date: result[i].attributes.created_at,
+                date: result[i].attributes.created_at.split('T')[0],
                 url: result[i].attributes.url,
             })
             categories.push(result[i].relationships.user_defined_tags.data[0].id.split(';')[1])
