@@ -381,7 +381,7 @@ if (!page && !directory) {
                             .then(res3 => res3.text())
                             .then((out3) => {
                                 var result = JSON.parse(out3).tree
-                                result.sort((a, b) => parseInt(a.path.split('_')[1]) - parseInt(b.path.split('_')[1]));
+                                result.sort((a, b) => parseInt(b.path.split('_')[1]) - parseInt(a.path.split('_')[1]));
                                 var articles = []
                                 var categories = []
                                 for (var j=0; j<result.length;j++) {
