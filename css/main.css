@@ -141,6 +141,15 @@ body {
 #nav .bx {
     font-size: 1.5em;
 }
+
+.nav-list:hover i {
+    display: none;
+  }
+
+.nav-list:hover span {
+    display: block !important;
+  }
+
 #projects-title, #toc-title {
     text-align: center;
     color: #fff;
