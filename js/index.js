@@ -351,11 +351,23 @@ if (!page && !directory) {
     var url = 'https://i.peacht.art/fanbox'
     fetch(url)
     .then(res => {
-        console.log(res.headers.get('Contet-Type'))
         return res.text()
     })
     .then((out) => {
-        document.querySelector(".article_list").innerText += out
+        var result = out.split('ID=')[1].split(';')[0]
+        var geturl = 'https://api.fanbox.cc/post.listCreator?creatorId=yeohangdang'
+        var getParam = {
+            headers: {
+                Cookie: result,
+            }
+        }
+        fetch(geturl, getParam)
+        .then(res2 => {
+            return res2.text()
+        })
+        .then((out2) => {
+            document.querySelector(".article_list").innerText += out2
+        })
     })
 } else if (directory) {
     document.querySelector(".page_title").innerText = directory
