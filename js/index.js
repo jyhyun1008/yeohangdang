@@ -345,7 +345,6 @@ if (!page && !directory) {
         getCat(directory.split('/')[0], categories);
 
     })
-} 
 } else if (directory.split('/')[0]=='blog2') {
 	document.querySelector(".page_title").innerText = 'blog'
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
