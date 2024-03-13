@@ -353,7 +353,10 @@ if (!page && !directory) {
         mode: 'no-cors'
     }
     fetch(url, param)
-    .then(res => {return res.text()})
+    .then(res => {
+        console.log(res)
+        return res.json()
+    })
     .then((out) => {
         document.querySelector(".article_list").innerText += out
     })
