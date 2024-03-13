@@ -345,30 +345,44 @@ if (!page && !directory) {
         getCat(directory.split('/')[0], categories);
 
     })
-} else if (directory=='blog2') {
+} 
+} else if (directory.split('/')[0]=='blog2') {
 	document.querySelector(".page_title").innerText = 'blog'
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
     var url = 'https://i.peacht.art/fanbox'
     fetch(url)
-    .then(res => {
-        return res.text()
-    })
+    .then(res => {return res.json()})
     .then((out) => {
-        var result = out.split(';')[0]
-        var geturl = 'https://api.fanbox.cc/post.listCreator?creatorId=yeohangdang'
-        var getParam = {
-            mode: 'no-cors',
-            headers: {
-                'Cookie': result,
+        var result = out.body.items
+        var articles = []
+        var categories = []
+        for (var i; i<result.length; i++) {
+            articles.push({
+                title: result[i].title,
+                category: result[i].tags[0],
+                date: result[i].publishedDatetime.substring(2, 4)+result[i].publishedDatetime.substring(5, 7)+result[i].publishedDatetime.substring(8, 10),
+                url: "https://yeohangdang.fanbox.cc/posts/"+result[i].id,
+            })
+            categories.push(result[i].tags[0])
+        }
+
+        var categorieset = new Set(categories);
+        categories = [...categorieset];
+        var category
+
+        if (directory.split('/').length == 1) {
+            category = ''
+        } else {
+            category = directory.split('/')[1]
+        }
+
+        for (var j=0; j<articles.length; j++){
+            if (articles[j].category == category || category == ''){
+                document.querySelector(".article_list").innerHTML += '<div class="article"><a href="'+articles[j].url+'" target="_blank"><span>'+articles[j].title+'</span><span><code>'+articles[j].category+'</code> <code>'+articles[j].date+'</code></span></a></div>'
             }
         }
-        fetch(geturl, getParam)
-        .then(res2 => {
-            return res2.text()
-        })
-        .then((out2) => {
-            document.querySelector(".article_list").innerText += out2
-        })
+
+        getCat(directory.split('/')[0], categories);
     })
 } else if (directory) {
     document.querySelector(".page_title").innerText = directory
