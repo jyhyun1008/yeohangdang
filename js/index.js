@@ -357,6 +357,7 @@ if (!page && !directory) {
         var result = out.split('ID=')[1].split(';')[0]
         var geturl = 'https://api.fanbox.cc/post.listCreator?creatorId=yeohangdang'
         var getParam = {
+            mode: 'no-cors',
             headers: {
                 Cookie: result,
             }
