@@ -354,9 +354,10 @@ if (!page && !directory) {
     .then((out) => {
         console.log(out)
         var result = out.body.items
+        console.log(result)
         var articles = []
         var categories = []
-        for (var i; i<result.length; i++) {
+        for (var i=0; i<result.length; i++) {
             articles.push({
                 title: result[i].title,
                 category: result[i].tags[0],
