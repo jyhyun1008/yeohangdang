@@ -352,6 +352,7 @@ if (!page && !directory) {
     fetch(url)
     .then(res => {return res.json()})
     .then((out) => {
+        console.log(out)
         var result = out.body.items
         var articles = []
         var categories = []
