@@ -348,14 +348,11 @@ if (!page && !directory) {
 } else if (directory=='blog2') {
 	document.querySelector(".page_title").innerText = 'blog'
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
-    var url = 'https://yeohangdang.fanbox.cc/'
-    var param = {
-        mode: 'no-cors'
-    }
-    fetch(url, param)
+    var url = 'https://i.peacht.art/fanbox'
+    fetch(url)
     .then(res => {
-        console.log(res)
-        return res.json()
+        console.log(res.headers.get('Contet-Type'))
+        return res.text()
     })
     .then((out) => {
         document.querySelector(".article_list").innerText += out
