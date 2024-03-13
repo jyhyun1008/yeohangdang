@@ -345,6 +345,15 @@ if (!page && !directory) {
         getCat(directory.split('/')[0], categories);
 
     })
+} else if (directory=='blog2') {
+	document.querySelector(".page_title").innerText = 'blog'
+    document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
+    var url = 'https://yeohangdang.fanbox.cc'
+    fetch(url)
+    .then(res => {return res.text()})
+    .then((out) => {
+        document.querySelector(".article_list").innerText += out
+    })
 } else if (directory) {
     document.querySelector(".page_title").innerText = directory
     document.querySelector(".page_content").innerHTML += '<div class="article_list"></div>'
